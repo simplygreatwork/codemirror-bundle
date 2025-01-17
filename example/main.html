@@ -5,9 +5,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0">
 <title>CodeMirror with bundle</title>
-<style>
-	body { margin: 0 }
-</style>
+<link rel="icon" href="data:image/x-icon;base64,">
+<link rel="stylesheet" type="text/css" href="./main.css"/>
 <script type="importmap">{"imports": {
 	"@codemirror/bundle": "../dist/bundle.js"
 }}</script>
@@ -19,14 +18,17 @@
 	import { gruvboxDark } from "@codemirror/bundle"
 	import { basic_setup } from "./setup.js"
 	
-	new EditorView({
-		parent: document.body,
-		doc: 'console.log("hello")\n',
-		extensions: [
-			basic_setup,
-			javascript(),
-			materialDark,
-		]
+	fetch('./document.js').then(response => response.text()).then(doc => {
+		
+		new EditorView({
+			parent: document.body,
+			doc,
+			extensions: [
+				basic_setup,
+				javascript(),
+				materialDark,
+			]
+		})
 	})
 	
 </script>
