@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0">
+<title>CodeMirror with bundle</title>
+<style>
+	body { margin: 0 }
+</style>
+<script type="importmap">{"imports": {
+	"@codemirror/bundle": "../dist/bundle.js"
+}}</script>
+<script type="module">
+	
+	import { EditorView } from "@codemirror/bundle"
+	import { javascript } from "@codemirror/bundle"
+	import { materialDark } from "@codemirror/bundle"
+	import { gruvboxDark } from "@codemirror/bundle"
+	import { basic_setup } from "./setup.js"
+	
+	new EditorView({
+		parent: document.body,
+		doc: 'console.log("hello")\n',
+		extensions: [
+			basic_setup,
+			javascript(),
+			materialDark,
+		]
+	})
+	
+</script>
+</head>
+<body>
+</body>
+</html>
